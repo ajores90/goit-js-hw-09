@@ -16,3 +16,70 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.label {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #666;
+  margin-top: 10px;
+}
+
+button[data-start] {
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #005ce6;
+}
+button[data-start]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button[data-stop] {
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button[data-stop]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
