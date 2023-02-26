@@ -58,9 +58,13 @@ button[data-start] {
   margin-top: 20px;
 }
 
-button:hover {
+button[data-start]:hover {
   background-color: #005ce6;
 }
+button[data-stop]:hover {
+  background-color: #005ce6;
+}
+
 button[data-start]:disabled {
   background-color: #ccc;
   cursor: not-allowed;

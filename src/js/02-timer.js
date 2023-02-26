@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 
 const startButton = document.querySelector('[data-start]');
 const daysElement = document.querySelector('[data-days]');
@@ -16,9 +17,9 @@ const options = {
     const selectedDate = selectedDates[0];
 
     selectedDate < new Date()
-      ? (window.alert('Please choose a date in the future'),
-        startButton.setAttribute('disabled', true))
-      : startButton.removeAttribute('disabled');
+      ? (Notiflix.Notify.failure('Please choose a date in the future'),
+        (startButton.disabled = true))
+      : (startButton.disabled = false);
   },
 };
 
@@ -71,7 +72,13 @@ startButton.addEventListener('click', () => {
   const selectedDate = datepicker.selectedDates[0];
   updateCountdown(selectedDate);
 
+  startButton.disabled = true;
+
   countdownInterval = setInterval(() => {
     updateCountdown(selectedDate);
   }, 1000);
+
+  setTimeout(() => {
+    startButton.disabled = false;
+  }, selectedDate.getTime() - Date.now());
 });
