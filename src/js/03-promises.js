@@ -34,17 +34,21 @@ form.addEventListener('submit', event => {
     promises.push(promise);
   }
 
-  Promise.allSettled(promises).then(results => {
-    results.forEach(result => {
-      if (result.status === 'fulfilled') {
-        Notiflix.Notify.success(
-          `✅ Fulfilled promise ${result.value.position} in ${result.value.delay}ms`
-        );
-      } else {
-        Notiflix.Notify.failure(
-          `❌ Rejected promise ${result.reason.position} in ${result.reason.delay}ms`
-        );
-      }
-    });
-  });
+  Promise.all(
+    promises.map(p => {
+      return p
+        .then(result => {
+          Notiflix.Notify.success(
+            `✅ Fulfilled promise ${result.position} in ${result.delay}ms`
+          );
+          return result;
+        })
+        .catch(error => {
+          Notiflix.Notify.failure(
+            `❌ Rejected promise ${error.position} in ${error.delay}ms`
+          );
+          return error;
+        });
+    })
+  );
 });
